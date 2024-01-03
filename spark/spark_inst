@@ -1,0 +1,12 @@
+wget https://www.apache.org/dyn/closer.lua/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3.tgz
+
+tar xvf /home/ubuntu/Downloads/spark-3.5.0-bin-hadoop3.tgz
+
+nano ~/.bashrc
+
+export SPARK_HOME=/home/ubuntu/spark-3.5.0-bin-hadoop3
+export PATH=export PATH=$PATH:$SPARK_HOME/bin
+
+source ~/.bashrc
+
+spark-shell

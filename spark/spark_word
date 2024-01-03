@@ -1,0 +1,26 @@
+nano sparkdata.txt
+
+cat parkdata.txt
+
+hdfs dfs -mkdir /spark
+
+hdfs dfs -put /home/ubuntu/sparkdata.txt /spark
+
+spark-shell
+
+val data=sc.textFile("/home/ubuntu/sparkdata.txt")
+
+data.collect;
+
+val splitdata = data.flatMap(line => line.split(" "));
+
+splitdata.collect;
+
+val mapdata = splitdata.map(word => (word,1));
+
+mapdata.collect;
+
+val reducedata = mapdata.reduceByKey(_+_);
+
+reducedata.collect;
+

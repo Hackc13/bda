@@ -1,0 +1,9 @@
+show databases;
+show tables;
+create table input(text_line string);
+
+load data local inpath '/home/ubuntu/sparkdata.txt' into table input;
+
+create table wordcount as select word, COUNT(*) FROM input LATERAL VIEW explode(split(text_line,' ')) 1table as word group by word;
+
+select * from wordcount;
